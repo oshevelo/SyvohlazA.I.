@@ -1,70 +1,39 @@
-'''
-Данное решение готово, но не учитывает порядок операций,
-но это будет доработано.
-Третье задание пока в работе.
-'''
-
-def calculate(operand1, operand2, operation='+'):
-    try:
-        operand1, operand2 = float(operand1), float(operand2)
-    except ValueError:
-        return 'Input error'
-    else:
-        if operation == '+':
-            return operand1 + operand2
-        elif operation == '-':
-            return operand1 - operand2
-        elif operation == '*':
-            return operand1 * operand2
-        elif operation == '/':
-            if operand2 == 0:
-                return 'Division by zero'
-            else:
-                return operand1 / operand2
-        else:
-            if operation in ('+', '-', '*', '/', '**'):
-                return operation
-            else:
-                return 'Wrong symbol'
-
+def calculate(s):
+    s = str(s)
+    if s.isdigit():
+        return float(s)
+    for c in ('-', '+', '*', '/'):
+        left, op, right = s.partition(c)
+        if op == '*':
+            return calculate(left) * calculate(right)
+        elif op == '/':
+            return calculate(left) / calculate(right)
+        elif op == '+':
+            return calculate(left) + calculate(right)
+        elif op == '-':
+            return calculate(left) - calculate(right)
 
 count = input('Enter number values: ')
+
+calculate_expression = ''
 
 try:
     count = int(count)
 except ValueError:
-    print('Value must be integers')
+    print("Values must be integer")
 else:
     if count == 1:
-        operand1 = input('Enter operand1: ')
+        operand1 = input('Enter the operand1: ')
         print(operand1)
     elif count > 0:
-        i = 2
+        calculate_expression+=(input('Enter the operand2: '))
 
-        operand1 = input('Enter operand1: ')
-        operation = input('Enter operation: ')
-        operand2 = input('Enter operand2: ')
+        for i in range(1, count):
+            calculate_expression+=(input('Enter the next_operation: '))
+            calculate_expression+=(input('Enter the next_operand: '))
 
-        result = calculate(operand1=operand1,
-                           operand2=operand2, operation=operation)
+        print(calculate(calculate_expression))
 
-        if isinstance(result, str):
-            print(result)
-        else:
-            while i < count:
-                operand1 = result
-                operation = input('Enter next operations: ')
-                operand2 = input('Enter next operand: ')
-                if isinstance(result, str):
-                    break
-                if operation not in ('+', '-', '*', '/', '**'):
-                    break
-
-                result = calculate(operand1=operand1,
-                                   operand2=operand2, operation=operation)
-
-                i += 1
-
-            print(result)
     else:
-        print('Nothing to calculate')
+        print('Nothing to calculate!')
+
