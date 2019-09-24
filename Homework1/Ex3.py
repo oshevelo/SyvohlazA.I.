@@ -7,7 +7,7 @@ def calculate_string(s):
         return 'Wrong input'
     else:
         return s
-
+            
 s = input('Input expression: ')
 
 print('result =', calculate_string(s))
