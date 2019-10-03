@@ -1,19 +1,26 @@
 from simpleeval import simple_eval
-
 def calculate_string(s):
-        try:
+        try:gs#bad syntax as for me
            s = simple_eval(s)
-        except Exception:
-           return 'Wrong input'
+        except Exception:# as e
+           return 'Wrong input'#'Wrong input {}'.format(e)
         else:
             return s
 
 def calculate(s):
-    s = str(s)
+    s = str(s)#what for?
     if s.isdigit():
+        '''
+        #FIXME: 
+        >>> s = '2.2'
+        >>> s.isdigit()
+        False
+        >>> float(s)
+        2.2
+        '''
         return float(s)
     for c in ('-', '+', '*', '/'):
-        right, op, left = s.partition(c)
+        left, op, right = s.partition(c)
         if op == '*':
             return calculate(left) * calculate(right)
         elif op == '/':
@@ -22,6 +29,16 @@ def calculate(s):
             return calculate(left) + calculate(right)
         elif op == '-':
             return calculate(left) - calculate(right)
+    '''
+        >>> s = '2++2'
+        >>> s.partition('+')
+        ('2', '+', '+2')
+        >>> left, op, right= s.partition('+')
+        >>> right
+        '+2'
+        >>> right.partition('+')
+        ('', '+', '2')
+    '''
 
 def calculator(operand1, operand2, operation='+'):
     try:
