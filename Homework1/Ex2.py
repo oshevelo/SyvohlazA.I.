@@ -1,17 +1,12 @@
+from simpleeval import simple_eval
+
 def calculate(s):
-    s = str(s)
-    if s.isdigit():
-        return float(s)
-    for c in ('-', '+', '*', '/'):
-        left, op, right = s.partition(c)
-        if op == '*':
-            return calculate(left) * calculate(right)
-        elif op == '/':
-            return calculate(left) / calculate(right)
-        elif op == '+':
-            return calculate(left) + calculate(right)
-        elif op == '-':
-            return calculate(left) - calculate(right)
+    try:
+        s = simple_eval(s)
+    except Exception as e:
+        return e
+    else:
+        return s
 
 count = input('Enter number values: ')
 
@@ -32,8 +27,7 @@ else:
             calculate_expression+=(input('Enter the next_operation: '))
             calculate_expression+=(input('Enter the next_operand: '))
 
-        print(calculate(calculate_expression))
+        print('result =', calculate(calculate_expression))
 
     else:
         print('Nothing to calculate!')
-
