@@ -1,28 +1,23 @@
 from simpleeval import simple_eval
 
 def calculate_string(s):
+        s = s.replace('pi', '3.14')
+        s = s.replace('e', '2.71')
         try:
-           s = simple_eval(s)
+            result = simple_eval(s)
+        except Exception as e:
+            return e
+        else:
+            return result
+            
+def calculate(s):
+        try:
+            s = simple_eval(s)
         except Exception:
-           return 'Wrong input'
+            return 'Wrong input'
         else:
             return s
-
-def calculate(s):
-    s = str(s)
-    if s.isdigit():
-        return float(s)
-    for c in ('-', '+', '*', '/'):
-        right, op, left = s.partition(c)
-        if op == '*':
-            return calculate(left) * calculate(right)
-        elif op == '/':
-            return calculate(left) / calculate(right)
-        elif op == '+':
-            return calculate(left) + calculate(right)
-        elif op == '-':
-            return calculate(left) - calculate(right)
-
+            
 def calculator(operand1, operand2, operation='+'):
     try:
         operand1, operand2 = float(operand1), float(operand2)
