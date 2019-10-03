@@ -1,6 +1,7 @@
 from simpleeval import simple_eval
+
 def calculate_string(s):
-        try:gs
+        try:
            s = simple_eval(s)
         except Exception:
            return 'Wrong input'
@@ -12,7 +13,7 @@ def calculate(s):
     if s.isdigit():
         return float(s)
     for c in ('-', '+', '*', '/'):
-        left, op, right = s.partition(c)
+        right, op, left = s.partition(c)
         if op == '*':
             return calculate(left) * calculate(right)
         elif op == '/':
