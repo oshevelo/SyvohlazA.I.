@@ -1,8 +1,9 @@
 from simpleeval import simple_eval
+import math
 
 def calculate_string(s):
-        s = s.replace('pi', '3.14')
-        s = s.replace('e', '2.71')
+        s = s.replace('pi', math.pi)
+        s = s.replace('e', math.e)
         try:
             result = simple_eval(s)
         except Exception as e:
@@ -13,7 +14,7 @@ def calculate_string(s):
 def calculate(s):
         try:
             s = simple_eval(s)
-        except Exception:
+        except Exception :
             return 'Wrong input'
         else:
             return s
