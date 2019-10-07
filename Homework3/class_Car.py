@@ -6,20 +6,20 @@ class Vehicle(object):
         self.color = color
         self.fuelType = fuelType
         self.vehicleType = vehicleType
-
+    
     def door(self, isopen=False):
         if isopen:
             return 'Open'
         else:
             return 'Close'
-        
+    
     def fuel(self, isfuel=True):
         if isfuel:
             return 'Full Fuel'
         else:
             return 'No Fuel'
-        
-        
+
+
 class Car(Vehicle):
     isopen = True
     isfuel = True
@@ -33,20 +33,20 @@ class Car(Vehicle):
     
     def brake(self):
         return 'I`m stop a %s %s' % (self.color, self.vehicleType)
-        
+    
     def openCloseDoor(self):
         if not self.isopen:
             return 'Close Door'
         else:
             return 'Open Door'
-        
+    
     def noFullFuel(self):
         if not self.isfuel:
             return 'No Fuel'
         else:
             return 'Full Fuel'
-        
-        
+
+
 class Truck(Vehicle):
     isopen = False
     isfuel = False
@@ -58,19 +58,19 @@ class Truck(Vehicle):
         self.fuelType = fuelType
         self.vehicleType = vehicleType
         self.hindcarriage = hindcarriage
-
+    
     def openCloseDoor(self):
         if not self.isopen:
             return 'Close Door'
         else:
             return 'Open Door'
-
+    
     def noFullFuel(self):
         if not self.isfuel:
             return 'No Fuel'
         else:
             return 'Full Fuel'
-        
+    
     def drive(self):
         return 'I`m driving a %s %s' % (self.color, self.vehicleType)
 
@@ -107,5 +107,3 @@ print('Doors:', car.doors, ', tires:', car.tires, ', color:', car.color, ', type
 truck.set(2, 6, 'black', 'diesel', 'truck', True)
 print('Doors:', truck.doors, ', tires:', truck.tires, ', color:', truck.color, ', type fuel:', truck.fuelType,
       ', type vehicle:', truck.vehicleType, ', hindcarriage:', truck.hindcarriage)
-
-
