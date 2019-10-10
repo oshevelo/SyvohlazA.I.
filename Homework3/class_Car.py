@@ -14,6 +14,7 @@ class Vehicle(object):
             return 'Close'
     
     def fuel(self, isfuel=True):
+        #FIXME: return 'Full Fuel' if isfuel else 'No Fuel'
         if isfuel:
             return 'Full Fuel'
         else:
@@ -35,12 +36,16 @@ class Car(Vehicle):
         return 'I`m stop a %s %s' % (self.color, self.vehicleType)
     
     def openCloseDoor(self):
+        #FIXME: return 'Close Door' if not self.isopen else 'Open Door'
+        #FIXME: move to upper level of inheritance
         if not self.isopen:
             return 'Close Door'
         else:
             return 'Open Door'
     
     def noFullFuel(self):
+        #FIXME: return 'Full Fuel' if not self.isfuel else 'No Fuel'
+        #FIXME: move to upper level of inheritance
         if not self.isfuel:
             return 'No Fuel'
         else:
@@ -60,12 +65,16 @@ class Truck(Vehicle):
         self.hindcarriage = hindcarriage
     
     def openCloseDoor(self):
+        #FIXME: return 'Close Door' if not self.isopen else 'Open Door'
+        #FIXME: move to upper level of inheritance
         if not self.isopen:
             return 'Close Door'
         else:
             return 'Open Door'
     
     def noFullFuel(self):
+        #FIXME: return 'No Fuel' if not self.isfuel else 'Full Fuel'
+        #FIXME: move to upper level of inheritance
         if not self.isfuel:
             return 'No Fuel'
         else:
